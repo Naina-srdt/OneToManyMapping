@@ -25,6 +25,7 @@ public class EmployeeController {
     }
 
     //Get Employee By id
+    //For Check
     @GetMapping("/{id}")
     public Optional<Employee> getEmployeeById(@PathVariable Long id){
          return employeeRepo.findById(id);
@@ -48,6 +49,9 @@ public class EmployeeController {
         return employeeRepo.findById(id).map(emp -> {
             emp.setName(updatedEmpData.getName());
             emp.setAge(updatedEmpData.getAge());
+            emp.setAddresses(updatedEmpData.getAddresses());
+            emp.setDepartment(updatedEmpData.getDepartment());
+            emp.setEmp_id(updatedEmpData.getEmp_id());
             return ResponseEntity.ok(employeeRepo.save(emp));
         }).orElse(ResponseEntity.notFound().build());
     }

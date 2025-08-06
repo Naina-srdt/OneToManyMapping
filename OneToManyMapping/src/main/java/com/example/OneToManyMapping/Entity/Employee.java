@@ -13,7 +13,10 @@ public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long emp_id;
+
+    @Column(nullable = false)
     private String name;
+
     private int age;
 
     @ManyToOne
